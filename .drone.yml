@@ -20,7 +20,6 @@ steps:
         path: "/go"
   - name: test
     image: golang:1.26.10-bookworm@sha256:632dff7351799a5a9954a48dc06670ade72ee44e8c351cdc0e5a57af2fea21af
-    pull: always
     commands:
       - go test -cover ./...
     volumes:
@@ -56,7 +55,6 @@ steps:
       - go env
   - name: build
     image: golang:1.26.10-bookworm@sha256:632dff7351799a5a9954a48dc06670ade72ee44e8c351cdc0e5a57af2fea21af
-    pull: always
     environment:
       CGO_ENABLED: "0"
     commands:
@@ -64,8 +62,6 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      pull_image: true
-      no_cache: true
       dockerfile: docker/Dockerfile.linux.amd64
       repo: plugins/slack
       username:
@@ -103,7 +99,6 @@ steps:
       - go env
   - name: build
     image: golang:1.26.10-bookworm@sha256:632dff7351799a5a9954a48dc06670ade72ee44e8c351cdc0e5a57af2fea21af
-    pull: always
     environment:
       CGO_ENABLED: "0"
     commands:
@@ -111,8 +106,6 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      pull_image: true
-      no_cache: true
       dockerfile: docker/Dockerfile.linux.arm64
       repo: plugins/slack
       username:
@@ -151,7 +144,6 @@ steps:
       - go env
   - name: build
     image: golang:1.21-windowsservercore-1809@sha256:8cf78f5fa41dd8159a418f13eef104eb5872576749a1c7013669d9375f3b79ae
-    pull: always
     environment:
       CGO_ENABLED: "0"
     commands:
@@ -160,8 +152,6 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      pull_image: true
-      no_cache: true
       dockerfile: docker/Dockerfile.windows.1809
       repo: plugins/slack
       username:
@@ -205,7 +195,6 @@ steps:
       - go env
   - name: build
     image: golang:1.26.10-windowsservercore-ltsc2022@sha256:c3eadda68ea666345f08d09104362a03a255e7ae1ff42d1b3897f4dbd698e222
-    pull: always
     environment:
       CGO_ENABLED: "0"
     commands:
@@ -213,8 +202,6 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      pull_image: true
-      no_cache: true
       dockerfile: docker/Dockerfile.windows.ltsc2022
       repo: plugins/slack
       username:
